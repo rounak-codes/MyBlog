@@ -45,11 +45,11 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		LinkPreset.About,
 		{
-			name: 'Tier List',         // The text shown on the button
-			url: '/tier-list/',         // The internal link to your new page
-			external: false,           // Set to false so it opens in the same tab
-		  },
-		]
+			name: "Tier List", // The text shown on the button
+			url: "/tier-list/", // The internal link to your new page
+			external: false, // Set to false so it opens in the same tab
+		},
+	],
 };
 
 export const profileConfig: ProfileConfig = {

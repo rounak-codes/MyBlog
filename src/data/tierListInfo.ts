@@ -1,27 +1,27 @@
 // src/data/tierListInfo.ts
 
 export const tierListInfo = [
-    { 
-        title: 'About the Tier List', 
-        content: `
+	{
+		title: "About the Tier List",
+		content: `
             <p>This tier list is designed to help you understand the current meta of <strong>Genshin Impact</strong>.</p>
             <br>
             <p>It focuses on optimal team compositions and Abyss performance.</p>
-        ` 
-    },
-    { 
-        title: 'Criteria & Methodology', 
-        content: `
+        `,
+	},
+	{
+		title: "Criteria & Methodology",
+		content: `
             <ul class="list-disc pl-5 space-y-1">
                 <li><strong>T0 (Meta):</strong> Characters that define the meta.</li>
                 <li><strong>T1 (Strong):</strong> excellent picks for any content.</li>
                 <li><strong>T2 (Viable):</strong> Good, but requires more investment.</li>
             </ul>
-        ` 
-    },
-    { 
-        title: 'Categories & Tags', 
-        content: `
+        `,
+	},
+	{
+		title: "Categories & Tags",
+		content: `
             <div class="space-y-3">
                 <p>Characters are categorized by their primary function in optimal teams:</p>
                 
@@ -48,11 +48,11 @@ export const tierListInfo = [
                     *Note: Characters are tagged based on their most effective C0 role (C6 for 4-stars).
                 </p>
             </div>
-        ` 
-    },
-    { 
-        title: 'Changelog', 
-        content: `
+        `,
+	},
+	{
+		title: "Changelog",
+		content: `
             <div class="space-y-2">
                 <div>
                     <span class="font-bold text-[var(--primary)]">v5.2</span> - <span class="text-xs opacity-70">Nov 30, 2025</span>
@@ -68,6 +68,6 @@ export const tierListInfo = [
                     </ul>
                 </div>
             </div>
-        ` 
-    }
+        `,
+	},
 ];

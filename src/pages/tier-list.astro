@@ -1,59 +1,67 @@
 ---
-import { characters } from '../data/tierlist';
-import { tierListInfo } from '../data/tierListInfo';
-import MainGridLayout from '../layouts/MainGridLayout.astro';
+import { tierListInfo } from "../data/tierListInfo";
+import { characters } from "../data/tierlist";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 // --- DATA & ICONS ---
 const icons = {
-  wildcard: '/assets/icons/star.png',
-  rarity4: '/assets/icons/4star.png',
-  rarity5: '/assets/icons/5star.png',
-  
-  // Element Icons
-  pyro: '/assets/icons/pyro.png',
-  hydro: '/assets/icons/hydro.png',
-  anemo: '/assets/icons/anemo.png',
-  electro: '/assets/icons/electro.png',
-  dendro: '/assets/icons/dendro.png',
-  cryo: '/assets/icons/cryo.png',
-  geo: '/assets/icons/geo.png',
-  
-  // Weapon Icons
-  sword: '/assets/icons/sword.png',
-  claymore: '/assets/icons/claymore.png',
-  polearm: '/assets/icons/polearm.png',
-  catalyst: '/assets/icons/catalyst.png',
-  bow: '/assets/icons/bow.png',
-  
-  close: '/assets/icons/close.png' 
+	wildcard: "/assets/icons/star.png",
+	rarity4: "/assets/icons/4star.png",
+	rarity5: "/assets/icons/5star.png",
+
+	// Element Icons
+	pyro: "/assets/icons/pyro.png",
+	hydro: "/assets/icons/hydro.png",
+	anemo: "/assets/icons/anemo.png",
+	electro: "/assets/icons/electro.png",
+	dendro: "/assets/icons/dendro.png",
+	cryo: "/assets/icons/cryo.png",
+	geo: "/assets/icons/geo.png",
+
+	// Weapon Icons
+	sword: "/assets/icons/sword.png",
+	claymore: "/assets/icons/claymore.png",
+	polearm: "/assets/icons/polearm.png",
+	catalyst: "/assets/icons/catalyst.png",
+	bow: "/assets/icons/bow.png",
+
+	close: "/assets/icons/close.png",
 };
 
 const filterData = {
-    rarity: [
-        { id: 'all', icon: icons.wildcard },
-        { id: '4', icon: icons.rarity4 },
-        { id: '5', icon: icons.rarity5 },
-    ],
-    elements: [
-        { id: 'all', icon: icons.wildcard },
-        { id: 'pyro', icon: icons.pyro }, { id: 'hydro', icon: icons.hydro }, { id: 'anemo', icon: icons.anemo },
-        { id: 'electro', icon: icons.electro }, { id: 'dendro', icon: icons.dendro }, { id: 'cryo', icon: icons.cryo }, { id: 'geo', icon: icons.geo },
-    ],
-    weapons: [
-        { id: 'all', icon: icons.wildcard },
-        { id: 'sword', icon: icons.sword }, { id: 'claymore', icon: icons.claymore }, { id: 'polearm', icon: icons.polearm },
-        { id: 'catalyst', icon: icons.catalyst }, { id: 'bow', icon: icons.bow },
-    ]
+	rarity: [
+		{ id: "all", icon: icons.wildcard },
+		{ id: "4", icon: icons.rarity4 },
+		{ id: "5", icon: icons.rarity5 },
+	],
+	elements: [
+		{ id: "all", icon: icons.wildcard },
+		{ id: "pyro", icon: icons.pyro },
+		{ id: "hydro", icon: icons.hydro },
+		{ id: "anemo", icon: icons.anemo },
+		{ id: "electro", icon: icons.electro },
+		{ id: "dendro", icon: icons.dendro },
+		{ id: "cryo", icon: icons.cryo },
+		{ id: "geo", icon: icons.geo },
+	],
+	weapons: [
+		{ id: "all", icon: icons.wildcard },
+		{ id: "sword", icon: icons.sword },
+		{ id: "claymore", icon: icons.claymore },
+		{ id: "polearm", icon: icons.polearm },
+		{ id: "catalyst", icon: icons.catalyst },
+		{ id: "bow", icon: icons.bow },
+	],
 };
 
 // Tier Colors
 const tierColors = {
-  'T0': 'border-red-500/50 bg-red-500/10 text-red-500',
-  'T0.5': 'border-orange-500/50 bg-orange-500/10 text-orange-500',
-  'T1': 'border-yellow-500/50 bg-yellow-500/10 text-yellow-500',
-  'T2': 'border-green-500/50 bg-green-500/10 text-green-500',
-  'T3': 'border-blue-500/50 bg-blue-500/10 text-blue-500',
-  'T4': 'border-gray-500/50 bg-gray-500/10 text-gray-500',
+	T0: "border-red-500/50 bg-red-500/10 text-red-500",
+	"T0.5": "border-orange-500/50 bg-orange-500/10 text-orange-500",
+	T1: "border-yellow-500/50 bg-yellow-500/10 text-yellow-500",
+	T2: "border-green-500/50 bg-green-500/10 text-green-500",
+	T3: "border-blue-500/50 bg-blue-500/10 text-blue-500",
+	T4: "border-gray-500/50 bg-gray-500/10 text-gray-500",
 };
 ---
 
