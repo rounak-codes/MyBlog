@@ -145,7 +145,7 @@ const tierColors = {
   </div>
 
 
-  <div class="max-w-7xl mx-auto hidden md:grid grid-cols-[6rem_1fr_1fr_1fr] gap-0 px-0 mb-2">
+  <div id="capture-target" class="max-w-7xl mx-auto hidden md:grid grid-cols-[6rem_1fr_1fr_1fr] gap-0 px-0 mb-2">
      <div></div>
      
      <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-red-500/50 flex items-center justify-center gap-2">
@@ -207,8 +207,8 @@ const tierColors = {
     function createCharCard(char) {
         const cons = char.constellation !== undefined ? char.constellation : (char.rarity === 5 ? 0 : 6);
         return `
-            <div class="flex flex-col items-center w-[64px]">
-              <div class="relative group w-[64px] h-[64px] rounded-md overflow-hidden bg-[var(--btn-regular-bg)] transition hover:scale-105 cursor-pointer shadow-md mb-1" title="${char.name}">
+            <div class="flex flex-col items-center w-[80px]">
+              <div class="relative group w-[80px] h-[80px] rounded-md overflow-hidden bg-[var(--btn-regular-bg)] transition hover:scale-105 cursor-pointer shadow-md mb-1" title="${char.name}">
                   <img src="${char.image}" class="w-full h-full object-cover" alt="${char.name}" onerror="this.style.opacity='0.2'"/>
                   <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-black/50 rounded-full p-0.5 backdrop-blur-sm">
                       <img src="${elementIcons[char.element]}" class="w-full h-full object-contain" />
@@ -351,4 +351,5 @@ const tierColors = {
         opacity: 1;
     }
   </style>
+
 </MainGridLayout>
