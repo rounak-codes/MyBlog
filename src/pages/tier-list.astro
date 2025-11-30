@@ -118,17 +118,30 @@ const tierColors = {
           <div class="filter-group flex bg-[var(--btn-regular-bg)] rounded-md p-0.5 shrink-0" data-group="element">
               {filterData.elements.map(item => (
                   <button class="filter-btn w-8 h-8 rounded-sm text-50 hover:text-90 hover:bg-[var(--btn-plain-bg-hover)] transition [data-active=true]:bg-[var(--primary)] [data-active=true]:text-white flex items-center justify-center" data-value={item.id} title={item.id}>
-                      {item.id === 'all' ? <span class="text-xl font-bold leading-none">∗</span> : <img src={item.icon} alt={item.id} class="w-5 h-5 object-contain" />}
-                  </button>
-              ))}
+                      {item.id === 'all' ? (
+                            <span class="text-3xl font-bold leading-none mb-1">∗</span>
+                        ) : (
+                            // WRAPPER ADDED: bg-black/50 rounded-full
+                            <div class="w-5 h-5 flex items-center justify-center bg-black/30 rounded-full">
+                                <img src={item.icon} alt={item.id} class="w-3.5 h-3.5 object-contain" />
+                            </div>
+                        )}
+                    </button>
+                ))}
           </div>
-          <div class="filter-group flex bg-[var(--btn-regular-bg)] rounded-md p-0.5 shrink-0" data-group="weapon">
-              {filterData.weapons.map(item => (
-                  <button class="filter-btn w-8 h-8 rounded-sm text-50 hover:text-90 hover:bg-[var(--btn-plain-bg-hover)] transition [data-active=true]:bg-[var(--primary)] [data-active=true]:text-white flex items-center justify-center" data-value={item.id} title={item.id}>
-                      {item.id === 'all' ? <span class="text-xl font-bold leading-none">∗</span> : <img src={item.icon} alt={item.id} class="w-5 h-5 object-contain" />}
-                  </button>
-              ))}
-          </div>
+          <!-- Weapon Group -->
+          <div class="filter-group flex bg-[var(--btn-regular-bg)] rounded-md mx-1.0 p-0.5 shrink-0" data-group="weapon">
+            {filterData.weapons.map(item => (
+                <button class="filter-btn w-8 h-8 rounded-sm text-50 hover:text-90 hover:bg-[var(--btn-plain-bg-hover)] transition [data-active=true]:bg-[var(--primary)] [data-active=true]:text-white flex items-center justify-center" data-value={item.id} title={item.id}>
+                    {item.id === 'all' ? (
+                        <span class="text-3xl font-bold leading-none mb-1">∗</span>
+                    ) : (
+                        // CLASSES ADDED: brightness-0 dark:invert
+                        <img src={item.icon} alt={item.id} class="w-5 h-5 object-contain brightness-0 dark:invert" />
+                    )}
+                </button>
+            ))}
+        </div>
       </div>
       <button id="resetFilters" class="px-3 py-2 rounded-md text-sm font-medium text-50 hover:text-red-400 hover:bg-[var(--btn-regular-bg-hover)] transition flex items-center gap-1.5 ml-auto shrink-0 border-l border-[var(--line-divider)] md:border-none pl-3 md:pl-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg> 
@@ -139,19 +152,29 @@ const tierColors = {
 
 <!-- TABLE HEADER -->
 <div class="max-w-7xl mx-auto hidden md:grid grid-cols-[6rem_1fr_1fr_1fr] gap-0 px-0 mb-2">
-   <div></div>
-   <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-red-500/50 flex items-center justify-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-      <span class="font-bold text-red-400 text-sm tracking-wider">MAIN DPS</span>
-   </div>
-   <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-purple-500/50 flex items-center justify-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M11 9h2V7h-2m0 10h2v-6h-2m-9 2h2v-2H2v-2h2V9H2V7h2V5h2v2h2v2H6v2h2v2H6v2H2v-2"/></svg>
-      <span class="font-bold text-purple-400 text-sm tracking-wider">SUB DPS</span>
-   </div>
-   <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-emerald-500/50 flex items-center justify-center gap-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57l.03-.32c0-.41-.17-.79-.44-1.06L14.17 1L7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2M9 9l4.34-4.34L12 10h9v2l-3 7H9V9M1 9h4v12H1V9z"/></svg>
-      <span class="font-bold text-emerald-400 text-sm tracking-wider">SUPPORT</span>
-   </div>
+  <div></div>
+  
+  <!-- MAIN DPS (Sword Icon) -->
+  <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-red-500/50 flex items-center justify-center gap-2">
+     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="text-red-400"><path fill="currentColor" d="M14.5 17.5L3 6V3h3l11.5 11.5c.83.83.83 2.17 0 3s-2.17.83-3 0zm5.66-3.66l-2.83-2.83-1.41 1.41 2.83 2.83 1.41-1.41zM20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/></svg>
+     <span class="font-bold text-red-400 text-sm tracking-wider">MAIN DPS</span>
+  </div>
+
+  <!-- SUB DPS (Borg/Robot Icon) -->
+  <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-purple-500/50 flex items-center justify-center gap-2 text-purple-400">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px">
+      <path fill="currentColor" d="M480-80q-11 0-21-3t-19-8L160-252q-19-11-29.5-29.5T120-322v-316q0-22 10.5-40.5T160-708l280-161q9-5 19-8t21-3q11 0 21 3t19 8l280 161q19 11 29.5 29.5T840-638v316q0 22-10.5 40.5T800-252L520-91q-9 5-19 8t-21 3ZM320-320v-120H200v118l240 139v-137H320Zm0-320h120v-137L200-638v118h120v-120Zm80 240h160v-160H400v160Zm240 80H520v137l240-139v-118H640v120Zm0-320v120h120v-118L520-777v137h120Z"/>
+    </svg>
+
+    <span class="font-bold text-purple-400 text-sm tracking-wider">SUB DPS</span>
+  </div>
+
+
+  <!-- SUPPORT (Potion/Lab Flask Icon) -->
+  <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-emerald-500/50 flex items-center justify-center gap-2">
+     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" class="text-emerald-400"><path fill="currentColor" d="M19.66 17.67L15 9.5V4h1V2H8v2h1v5.5l-4.66 8.17C3.76 18.8 4.58 20 5.89 20h12.22c1.31 0 2.13-1.2 1.55-2.33zM7 18l3.5-6H14l3.5 6H7z"/></svg>
+     <span class="font-bold text-emerald-400 text-sm tracking-wider">SUPPORT</span>
+  </div>
 </div>
 
 <!-- HIDDEN DATA BRIDGE -->
@@ -233,6 +256,11 @@ const tierColors = {
       if (char.id === 'aloy') bgImage = '/assets/backgrounds/aloy-bg.png';
       else if (char.rarity === 5) bgImage = '/assets/backgrounds/5star-bg.png';
 
+      const tagsHtml = char.tags ? char.tags.map((tag: string, i: number) => {
+             const suffix = i < char.tags.length - 1 ? ',' : '';
+             return `<span class="${getTagColor(tag)} drop-shadow-sm font-bold">${tag}${suffix}</span>`;
+        }).join(' ') : '';
+
       return `
           <div class="relative group w-[80px] flex flex-col items-center z-0 hover:z-50">
             
@@ -248,6 +276,11 @@ const tierColors = {
                 <div class="absolute bottom-0 left-0 w-full pt-5 pb-1 px-0.5 bg-gradient-to-t from-black/90 via-black/50 to-transparent z-20 flex items-end justify-center">
                     <span class="text-[9px] text-white font-bold text-center leading-none truncate w-full drop-shadow-md">${char.name}</span>
                 </div>
+            </div>
+
+            <!-- NEW: TAGS BELOW CARD -->
+            <div class="text-[9px] uppercase text-center leading-3 flex flex-wrap justify-center gap-x-1 w-[90px] mt-0.5">
+                ${tagsHtml}
             </div>
 
             <!-- PRYDWEN HOVER POPUP -->

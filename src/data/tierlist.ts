@@ -12,6 +12,7 @@ export interface Character {
         stygian: string;
     };
     role: "DPS" | "Sub-DPS" | "Support";
+	tags?: string[];
 }
 
 export const characters: Character[] = [
@@ -119,6 +120,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1.5",
         },
+		tags: ["healer"],
     },
     {
         id: "barbara",
@@ -1131,7 +1133,7 @@ export const characters: Character[] = [
         element: "anemo",
         weapon: "sword",
         rarity: 5,
-        image: "/assets/images/characters/traveler_anemo.png",
+        image: "/assets/images/characters/aether.png",
         role: "Support",
         ranks: {
             overworld: "T2.5",
@@ -1146,7 +1148,7 @@ export const characters: Character[] = [
         element: "dendro",
         weapon: "sword",
         rarity: 5,
-        image: "/assets/images/characters/traveler_dendro.png",
+        image: "/assets/images/characters/lumine.png",
         role: "Support",
         ranks: {
             overworld: "T2",
@@ -1161,7 +1163,7 @@ export const characters: Character[] = [
         element: "electro",
         weapon: "sword",
         rarity: 5,
-        image: "/assets/images/characters/traveler_electro.png",
+        image: "/assets/images/characters/aether.png",
         role: "Support",
         ranks: {
             overworld: "T3",
@@ -1176,7 +1178,7 @@ export const characters: Character[] = [
         element: "geo",
         weapon: "sword",
         rarity: 5,
-        image: "/assets/images/characters/traveler_geo.png",
+        image: "/assets/images/characters/lumine.png",
         role: "Sub-DPS",
         ranks: {
             overworld: "T2.5",
@@ -1191,7 +1193,7 @@ export const characters: Character[] = [
         element: "hydro",
         weapon: "sword",
         rarity: 5,
-        image: "/assets/images/characters/traveler_hydro.png",
+        image: "/assets/images/characters/aether.png",
         role: "DPS",
         ranks: {
             overworld: "T3",
