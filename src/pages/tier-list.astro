@@ -1,30 +1,31 @@
 ---
-import MainGridLayout from '../layouts/MainGridLayout.astro';
 import { characters } from '../data/tierlist';
+import { tierListInfo } from '../data/tierListInfo';
+import MainGridLayout from '../layouts/MainGridLayout.astro';
 
 // --- DATA & ICONS ---
-// We define the icons here as SVG paths to keep the HTML clean.
-// You can replace these paths with exact game asset SVGs later if you prefer.
-
 const icons = {
-  wildcard: '<path fill="currentColor" d="M12 2L14.5 9.5L22 9.5L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5L9.5 9.5L12 2Z"/>', // Star shape
-  rarity4: '<path fill="#a855f7" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21z"/><text x="12" y="16" font-size="8" fill="white" text-anchor="middle" font-weight="bold">4</text>', // Purple star with '4'
-  rarity5: '<path fill="#eab308" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21z"/><text x="12" y="16" font-size="8" fill="white" text-anchor="middle" font-weight="bold">5</text>', // Gold star with '5'
-  // Simplified Elemental Icons
-  pyro: '<path fill="currentColor" d="M12 2c0 0-3 2.5-3 6 0 2.5 2 4.5 4 4.5 1.5 0 3-1 3-3 0-2.5-2-4.5-2-7.5h-2zM9.5 15c-1.5 0-3 1.5-3 3.5 0 2.5 2.5 4.5 5.5 4.5s5.5-2 5.5-4.5c0-2-2-4-4-4h-4z"/>',
-  hydro: '<path fill="currentColor" d="M12 2C9 6 6 9 6 13s3 7 6 7 6-3 6-7-3-7-6-11zm0 16c-2 0-4-1.5-4-4s2-5 4-8c2 3 4 5.5 4 8s-2 4-4 4z"/>',
-  anemo: '<path fill="currentColor" d="M12 2c-3 0-5.5 2.5-5.5 5.5S8.5 12 11 13c-2.5 1-4.5 3.5-4.5 6.5S8.5 25 12 25s5.5-2.5 5.5-5.5-2-4.5-4.5-5.5c2.5-1 5-3.5 5-6.5S15 2 12 2zm0 19c-1.5 0-3-1-3-3s1.5-3 3-3 3 1 3 3-1.5 3-3 3zm0-13c-1.5 0-3-1-3-3s1.5-3 3-3 3 1 3 3-1.5 3-3 3z"/>',
-  electro: '<path fill="currentColor" d="M11 2L6 13h4l-1 9 10-11h-5l3-9z"/>',
-  dendro: '<path fill="currentColor" d="M12 2C8 4 4 8 4 12s4 8 8 8 8-4 8-8-4-8-8-8zm0 14c-2.5 0-5-2-5-5s2.5-5 5-5 5 2.5 5 5-2.5 5-5 5z"/>',
-  cryo: '<path fill="currentColor" d="M12 2L9 7h6l-3-5zm-6 6L2 12l4 4V8zm12 0v8l4-4-4-4zm-6 10l3 5-6-5h3zm-4-2l-3 5 3-1v-4zm8 0v4l3 1-3-5z"/>',
-  geo: '<path fill="currentColor" d="M6 4l6-2 6 2v8l-6 6-6-6V4zm2 2v7l4 4 4-4V6H8z"/>',
-  // Simplified Weapon Icons
-  sword: '<path fill="currentColor" d="M6 2l10 10-2 2-10-10zM18 16l4 4-2 2-4-4z"/>',
-  claymore: '<path fill="currentColor" d="M4 2l12 12-2 2-12-12zM16 14l6 6-2 2-6-6z"/>',
-  polearm: '<path fill="currentColor" d="M2 20l2 2 18-18-2-2z"/>',
-  catalyst: '<path fill="currentColor" d="M12 2C7 2 3 6 3 11s4 9 9 9 9-4 9-9-4-9-9-9zm0 16c-4 0-7-3-7-7s3-7 7-7 7 3 7 7-3 7-7 7z"/>',
-  bow: '<path fill="currentColor" d="M4 12c0-4.5 3.5-8 8-8V2C6.5 2 2 6.5 2 12s4.5 10 10 10v-2c-4.5 0-8-3.5-8-8zM20 12c0-1.5-.5-3-1.5-4.5l-1.5 1.5c.5 1 1 2 1 3s-.5 2-1 3l1.5 1.5c1-1.5 1.5-3 1.5-4.5zM16 12c0-1-.5-2-1-3l-1.5 1.5c.5.5 1 1 1 1.5s-.5 1-1 1.5l1.5 1.5c.5-1 1-2 1-3z"/>',
-  close: '<path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>'
+  wildcard: '/assets/icons/star.png',
+  rarity4: '/assets/icons/4star.png',
+  rarity5: '/assets/icons/5star.png',
+  
+  // Element Icons
+  pyro: '/assets/icons/pyro.png',
+  hydro: '/assets/icons/hydro.png',
+  anemo: '/assets/icons/anemo.png',
+  electro: '/assets/icons/electro.png',
+  dendro: '/assets/icons/dendro.png',
+  cryo: '/assets/icons/cryo.png',
+  geo: '/assets/icons/geo.png',
+  
+  // Weapon Icons
+  sword: '/assets/icons/sword.png',
+  claymore: '/assets/icons/claymore.png',
+  polearm: '/assets/icons/polearm.png',
+  catalyst: '/assets/icons/catalyst.png',
+  bow: '/assets/icons/bow.png',
+  
+  close: '/assets/icons/close.png' 
 };
 
 const filterData = {
@@ -58,21 +59,16 @@ const tierColors = {
 
 <MainGridLayout title="Tier List">
   
-  <div class="max-w-6xl mx-auto mb-6">
+  <div class="max-w-7xl mx-auto mb-6">
     <div class="card-base p-6 mb-4 flex flex-col items-center text-center">
         <h1 class="text-3xl md:text-4xl font-bold text-90 mb-2">Xiffy's Tier List</h1>
         <div class="flex items-center gap-2 text-50 text-sm">
             <span>Patch: 5.2</span><span class="w-1 h-1 bg-current rounded-full"></span><span>Updated: Today</span>
         </div>
     </div>
+    
     <div class="card-base flex flex-col">
-      {[
-        { title: 'About the Tier List', content: 'This tier list is designed to help you understand the current meta...' },
-        { title: 'Categories & Tags', content: 'We categorize characters based on their primary roles in optimal teams...' },
-        { title: 'Ratings & Meta Lines', content: 'T0 = Absolute Meta, T1 = Strong, T2 = Viable...' },
-        { title: 'Criteria', content: 'Rankings are based on usage rates, clear times, and versatility...' },
-        { title: 'Changelog', content: 'v5.2: Added new character X, adjusted Y...' }
-      ].map((item) => (
+      {tierListInfo.map((item) => (
         <details class="group border-b border-[var(--line-divider)] border-dashed last:border-none">
           <summary class="flex justify-between items-center p-4 font-medium text-75 hover:text-[var(--primary)] hover:bg-[var(--btn-plain-bg-hover)] transition select-none list-none cursor-pointer">
             {item.title}
@@ -80,15 +76,13 @@ const tierColors = {
                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z"/></svg>
             </span>
           </summary>
-          <div class="px-4 pb-4 text-sm text-50 pt-2">
-            <p>{item.content}</p>
-          </div>
+          <div class="px-4 pb-4 text-sm text-50 pt-2" set:html={item.content} />
         </details>
       ))}
     </div>
   </div>
 
-  <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
+  <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-2 mb-4">
     {['overworld', 'abyss', 'theatre', 'stygian'].map((mode) => (
       <button class="mode-btn relative p-3 card-base hover:bg-[var(--btn-card-bg-hover)] group transition-all border border-transparent" data-mode={mode}>
         <div class="text-xs uppercase tracking-wider text-50 mb-1">Game Mode</div>
@@ -101,7 +95,7 @@ const tierColors = {
   <div class="max-w-7xl mx-auto mb-6 sticky top-[4.5rem] z-20">
     <div class="card-base p-1.5 flex flex-nowrap items-center gap-1.5 bg-[var(--card-bg)] shadow-lg border border-[var(--line-divider)] overflow-x-auto hide-scrollbar">
         
-        <div class="relative min-w-[140px] w-40 md:w-64 mx-1.5 group shrink-0">
+        <div class="relative min-w-[140px] w-40 md:w-56 mx-1.5 group shrink-0">
             <input type="text" id="searchInput" placeholder="Search..." class="w-full bg-[var(--btn-regular-bg)] text-90 rounded-md pl-4 pr-8 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-[var(--primary)] transition placeholder:text-50" />
             <button id="clearSearch" class="absolute right-2 top-1/2 -translate-y-1/2 text-50 hover:text-90 opacity-0 group-focus-within:opacity-100 has-value:opacity-100 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" set:html={icons.close}></svg>
@@ -111,11 +105,10 @@ const tierColors = {
         <div class="h-5 w-px bg-[var(--line-divider)] hidden md:block shrink-0"></div>
 
         <div class="flex flex-nowrap gap-1.5 items-center mx-1.5">
-            
             <div class="filter-group flex bg-[var(--btn-regular-bg)] rounded-md p-0.5 shrink-0" data-group="rarity">
                 {filterData.rarity.map(item => (
                     <button class="filter-btn relative p-1 rounded-sm text-50 hover:text-90 hover:bg-[var(--btn-plain-bg-hover)] transition [data-active=true]:bg-[var(--primary)] [data-active=true]:text-white" data-value={item.id} title={item.id === 'all' ? 'All Rarities' : item.id + ' Star'}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" set:html={item.icon}></svg>
+                        <img src={item.icon} alt={item.id} class="w-5 h-5 object-contain" />
                     </button>
                 ))}
             </div>
@@ -123,7 +116,7 @@ const tierColors = {
             <div class="filter-group flex bg-[var(--btn-regular-bg)] rounded-md mx-1.5 p-0.5 shrink-0" data-group="element">
                 {filterData.elements.map(item => (
                     <button class="filter-btn p-1 rounded-sm text-50 hover:text-90 hover:bg-[var(--btn-plain-bg-hover)] transition [data-active=true]:bg-[var(--primary)] [data-active=true]:text-white" data-value={item.id} title={item.id}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" set:html={item.icon}></svg>
+                        <img src={item.icon} alt={item.id} class="w-5 h-5 object-contain" />
                     </button>
                 ))}
             </div>
@@ -131,7 +124,7 @@ const tierColors = {
             <div class="filter-group flex bg-[var(--btn-regular-bg)] rounded-md mx-1.0 p-0.5 shrink-0" data-group="weapon">
                 {filterData.weapons.map(item => (
                     <button class="filter-btn p-1 rounded-sm text-50 hover:text-90 hover:bg-[var(--btn-plain-bg-hover)] transition [data-active=true]:bg-[var(--primary)] [data-active=true]:text-white" data-value={item.id} title={item.id}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" set:html={item.icon}></svg>
+                        <img src={item.icon} alt={item.id} class="w-5 h-5 object-contain" />
                     </button>
                 ))}
             </div>
@@ -144,181 +137,208 @@ const tierColors = {
   </div>
 
 
-  <div id="tierListContainer" class="max-w-6xl mx-auto flex flex-col gap-3 min-h-[50vh]">
+  <div class="max-w-7xl mx-auto hidden md:grid grid-cols-[6rem_1fr_1fr_1fr] gap-0 px-0 mb-2">
+     <div></div>
+     
+     <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-red-500/50 flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        <span class="font-bold text-red-400 text-sm tracking-wider">MAIN DPS</span>
+     </div>
+
+     <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-purple-500/50 flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M11 9h2V7h-2m0 10h2v-6h-2m-9 2h2v-2H2v-2h2V9H2V7h2V5h2v2h2v2H6v2h2v2H6v2H2v-2"/></svg>
+        <span class="font-bold text-purple-400 text-sm tracking-wider">SUB DPS</span>
+     </div>
+
+     <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-emerald-500/50 flex items-center justify-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="M9 21h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2c0-1.1-.9-2-2-2h-6.31l.95-4.57l.03-.32c0-.41-.17-.79-.44-1.06L14.17 1L7.58 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2M9 9l4.34-4.34L12 10h9v2l-3 7H9V9M1 9h4v12H1V9z"/></svg>
+        <span class="font-bold text-emerald-400 text-sm tracking-wider">SUPPORT</span>
+     </div>
+  </div>
+
+
+  <div id="tierListContainer" class="max-w-7xl mx-auto flex flex-col gap-3 min-h-[50vh]">
     </div>
 
 
-    <script define:vars={{ characters, tierColors }}>
-      // --- STATE ---
-      let currentMode = 'abyss';
-      let filters = { element: 'all', weapon: 'all', rarity: 'all', search: '' };
-  
-      // --- DOM ELEMENTS ---
-      const container = document.getElementById('tierListContainer');
-      const modeBtns = document.querySelectorAll('.mode-btn');
-      const searchInput = document.getElementById('searchInput');
-      const clearSearchBtn = document.getElementById('clearSearch');
-      const filterBtns = document.querySelectorAll('.filter-btn');
-      const resetBtn = document.getElementById('resetFilters');
-  
-      // --- HELPER: COLOR LOGIC FOR TAGS ---
-      function getTagColor(tag) {
-          const t = tag.toUpperCase();
-          if (t.includes('DPS') || t.includes('PARTNER') || t.includes('CARRY')) return 'text-red-400';
-          if (t.includes('BUFF') || t.includes('ADVANCE') || t.includes('SP-FRIENDLY') || t.includes('HEALER')) return 'text-emerald-400';
-          if (t.includes('DEBUFF') || t.includes('DOT') || t.includes('BREAK')) return 'text-blue-300';
-          if (t.includes('SHIELD') || t.includes('SUSTAIN')) return 'text-yellow-400';
-          return 'text-gray-300'; // Default color
+  <script define:vars={{ characters, tierColors }}>
+    // --- STATE ---
+    let currentMode = 'abyss';
+    let filters = { element: 'all', weapon: 'all', rarity: 'all', search: '' };
+
+    // --- DOM ELEMENTS ---
+    const container = document.getElementById('tierListContainer');
+    const modeBtns = document.querySelectorAll('.mode-btn');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearch');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const resetBtn = document.getElementById('resetFilters');
+
+    // --- HELPER: ELEMENT ICON PATHS ---
+    const elementIcons = {
+        'pyro': '/assets/icons/pyro.png',
+        'hydro': '/assets/icons/hydro.png',
+        'anemo': '/assets/icons/anemo.png',
+        'electro': '/assets/icons/electro.png',
+        'dendro': '/assets/icons/dendro.png',
+        'cryo': '/assets/icons/cryo.png',
+        'geo': '/assets/icons/geo.png'
+    };
+
+    // --- HELPER: TAG COLOR LOGIC ---
+    function getTagColor(tag) {
+        const t = tag.toUpperCase();
+        if (t.includes('DPS') || t.includes('PARTNER') || t.includes('CARRY')) return 'text-red-400';
+        if (t.includes('BUFF') || t.includes('ADVANCE') || t.includes('SP-FRIENDLY') || t.includes('HEALER')) return 'text-emerald-400';
+        if (t.includes('DEBUFF') || t.includes('DOT') || t.includes('BREAK')) return 'text-blue-300';
+        if (t.includes('SHIELD') || t.includes('SUSTAIN')) return 'text-yellow-400';
+        return 'text-gray-300';
+    }
+
+    // --- HELPER: CARD HTML GENERATOR ---
+    function createCharCard(char) {
+        const cons = char.constellation !== undefined ? char.constellation : (char.rarity === 5 ? 0 : 6);
+        return `
+            <div class="flex flex-col items-center w-[64px]">
+              <div class="relative group w-[64px] h-[64px] rounded-md overflow-hidden bg-[var(--btn-regular-bg)] transition hover:scale-105 cursor-pointer shadow-md mb-1" title="${char.name}">
+                  <img src="${char.image}" class="w-full h-full object-cover" alt="${char.name}" onerror="this.style.opacity='0.2'"/>
+                  <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-black/50 rounded-full p-0.5 backdrop-blur-sm">
+                      <img src="${elementIcons[char.element]}" class="w-full h-full object-contain" />
+                  </div>
+                  <div class="absolute bottom-0 right-0 bg-[#eab308] text-black text-[10px] font-bold px-1.5 py-0.5 rounded-tl-md leading-none shadow-sm z-10">C${cons}</div>
+                  <div class="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition text-[10px] text-white font-bold text-center p-1 leading-tight z-20">${char.name}</div>
+              </div>
+              <div class="text-[9px] font-bold uppercase text-center leading-3 flex flex-wrap justify-center gap-x-1 w-24">
+                  ${char.tags ? char.tags.map((tag, i) => `<span class="${getTagColor(tag)} drop-shadow-sm">${tag}${i < char.tags.length - 1 ? ',' : ''}</span>`).join('') : ''}
+              </div>
+            </div>
+        `;
+    }
+
+    function init() {
+      document.querySelector('[data-mode="abyss"]')?.classList.add('active');
+      setActiveFilterBtns();
+      render();
+    }
+
+    function setActiveFilterBtns() {
+        filterBtns.forEach(btn => {
+            const group = btn.closest('.filter-group').dataset.group;
+            btn.dataset.active = filters[group] === btn.dataset.value ? 'true' : 'false';
+        });
+    }
+
+    function render() {
+      container.innerHTML = '';
+      
+      const filtered = characters.filter(char => {
+        const matchesSearch = char.name.toLowerCase().includes(filters.search.toLowerCase());
+        const matchesEl = filters.element === 'all' || char.element === filters.element;
+        const matchesWp = filters.weapon === 'all' || char.weapon === filters.weapon;
+        const matchesRarity = filters.rarity === 'all' || char.rarity.toString() === filters.rarity;
+        return matchesSearch && matchesEl && matchesWp && matchesRarity;
+      });
+
+      const tiers = { 'T0': [], 'T0.5': [], 'T1': [], 'T2': [], 'T3': [], 'T4': [] };
+      filtered.forEach(char => {
+        const rank = char.ranks[currentMode] || 'T4';
+        if (tiers[rank]) tiers[rank].push(char);
+      });
+
+      let hasResults = false;
+      Object.keys(tiers).forEach(tier => {
+        if (tiers[tier].length === 0) return;
+        hasResults = true;
+        
+        // Bucketing characters into columns based on role
+        const cols = {
+            main: tiers[tier].filter(c => c.role.toLowerCase().includes('main') || c.role === 'DPS'),
+            sub: tiers[tier].filter(c => c.role.toLowerCase().includes('sub')),
+            support: tiers[tier].filter(c => c.role.toLowerCase().includes('support') || c.role === 'Sustain' || c.role === 'Amplifier')
+        };
+
+        const row = document.createElement('div');
+        row.className = 'card-base flex flex-col md:flex-row overflow-hidden';
+        const labelColorClass = tierColors[tier] || tierColors['T4'];
+        
+        // We use a Grid for the content area to align with the header
+        row.innerHTML = `
+          <div class="w-full md:w-24 ${labelColorClass} font-bold text-2xl flex items-center justify-center p-4 border-b md:border-b-0 md:border-r border-[var(--line-divider)] border-dashed shrink-0">
+            ${tier}
+          </div>
+
+          <div class="flex-grow grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--line-divider)] border-dashed bg-[var(--card-bg)]">
+            
+            <div class="p-3 flex flex-wrap gap-x-3 gap-y-6 content-start relative min-h-[100px]">
+                <div class="md:hidden text-xs font-bold text-red-400 w-full mb-2 opacity-75">MAIN DPS</div>
+                ${cols.main.map(c => createCharCard(c)).join('')}
+            </div>
+
+            <div class="p-3 flex flex-wrap gap-x-3 gap-y-6 content-start relative min-h-[100px]">
+                <div class="md:hidden text-xs font-bold text-purple-400 w-full mb-2 opacity-75">SUB DPS</div>
+                ${cols.sub.map(c => createCharCard(c)).join('')}
+            </div>
+
+            <div class="p-3 flex flex-wrap gap-x-3 gap-y-6 content-start relative min-h-[100px]">
+                 <div class="md:hidden text-xs font-bold text-emerald-400 w-full mb-2 opacity-75">SUPPORT</div>
+                ${cols.support.map(c => createCharCard(c)).join('')}
+            </div>
+
+          </div>
+        `;
+        container.appendChild(row);
+      });
+
+      if (!hasResults) {
+        container.innerHTML = `<div class="card-base p-8 text-center text-50 italic">No characters found matching criteria.</div>`;
       }
-  
-      // --- HELPER: ELEMENT ICON PATHS (For Top-Left Badge) ---
-      const elementIcons = {
-          'pyro': '/assets/icons/pyro.png',
-          'hydro': '/assets/icons/hydro.png',
-          'anemo': '/assets/icons/anemo.png',
-          'electro': '/assets/icons/electro.png',
-          'dendro': '/assets/icons/dendro.png',
-          'cryo': '/assets/icons/cryo.png',
-          'geo': '/assets/icons/geo.png'
-      };
-  
-      function init() {
-        document.querySelector('[data-mode="abyss"]')?.classList.add('active');
+      searchInput.parentElement.classList.toggle('has-value', filters.search.length > 0);
+    }
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        modeBtns.forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        currentMode = e.currentTarget.dataset.mode;
+        render();
+      });
+    });
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const group = e.currentTarget.closest('.filter-group').dataset.group;
+            const value = e.currentTarget.dataset.value;
+            filters[group] = value;
+            setActiveFilterBtns();
+            render();
+        });
+    });
+
+    searchInput.addEventListener('input', (e) => { filters.search = e.target.value; render(); });
+    clearSearchBtn.addEventListener('click', () => {
+        filters.search = '';
+        searchInput.value = '';
+        render();
+        searchInput.focus();
+    });
+    resetBtn.addEventListener('click', () => {
+        filters = { element: 'all', weapon: 'all', rarity: 'all', search: '' };
+        searchInput.value = '';
         setActiveFilterBtns();
         render();
-      }
-  
-      function setActiveFilterBtns() {
-          filterBtns.forEach(btn => {
-              const group = btn.closest('.filter-group').dataset.group;
-              btn.dataset.active = filters[group] === btn.dataset.value ? 'true' : 'false';
-          });
-      }
-  
-      function render() {
-        container.innerHTML = '';
-        
-        const filtered = characters.filter(char => {
-          const matchesSearch = char.name.toLowerCase().includes(filters.search.toLowerCase());
-          const matchesEl = filters.element === 'all' || char.element === filters.element;
-          const matchesWp = filters.weapon === 'all' || char.weapon === filters.weapon;
-          const matchesRarity = filters.rarity === 'all' || char.rarity.toString() === filters.rarity;
-          return matchesSearch && matchesEl && matchesWp && matchesRarity;
-        });
-  
-        const tiers = { 'T0': [], 'T0.5': [], 'T1': [], 'T2': [], 'T3': [], 'T4': [] };
-        filtered.forEach(char => {
-          const rank = char.ranks[currentMode] || 'T4';
-          if (tiers[rank]) tiers[rank].push(char);
-        });
-  
-        let hasResults = false;
-        Object.keys(tiers).forEach(tier => {
-          if (tiers[tier].length === 0) return;
-          hasResults = true;
-  
-          const row = document.createElement('div');
-          row.className = 'card-base flex flex-col md:flex-row overflow-hidden';
-          const labelColorClass = tierColors[tier] || tierColors['T4'];
-          
-          row.innerHTML = `
-            <div class="w-full md:w-24 ${labelColorClass} font-bold text-2xl flex items-center justify-center p-4 border-b md:border-b-0 md:border-r border-[var(--line-divider)] border-dashed shrink-0">
-              ${tier}
-            </div>
-            <div class="p-4 flex flex-wrap gap-x-3 gap-y-6 w-full bg-[var(--card-bg)] content-start">
-              ${tiers[tier].map(char => {
-                 // LOGIC: Default to C0 for 5-star, C6 for 4-star, unless manually specified
-                 const cons = char.constellation !== undefined 
-                             ? char.constellation 
-                             : (char.rarity === 5 ? 0 : 6);
-  
-                 return `
-                <div class="flex flex-col items-center w-[72px]">
-                  
-                  <div class="relative group w-[72px] h-[72px] rounded-md overflow-hidden bg-[var(--btn-regular-bg)] transition hover:scale-105 cursor-pointer shadow-md mb-1" title="${char.name}">
-                      <img src="${char.image}" class="w-full h-full object-cover" alt="${char.name}" onerror="this.style.opacity='0.2'"/>
-                      
-                      <div class="absolute top-0.5 left-0.5 w-5 h-5 bg-black/50 rounded-full p-0.5 backdrop-blur-sm">
-                          <img src="${elementIcons[char.element]}" class="w-full h-full object-contain" />
-                      </div>
-  
-                      <div class="absolute bottom-0 right-0 bg-[#eab308] text-black text-[10px] font-bold px-1.5 py-0.5 rounded-tl-md leading-none shadow-sm z-10">
-                          C${cons}
-                      </div>
-  
-                      <div class="absolute inset-0 flex items-center justify-center bg-black/70 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition text-[10px] text-white font-bold text-center p-1 leading-tight z-20">
-                      ${char.name}
-                      </div>
-                  </div>
-  
-                  <div class="text-[9px] font-bold uppercase text-center leading-3 flex flex-wrap justify-center gap-x-1 w-24">
-                      ${char.tags ? char.tags.map((tag, i) => `
-                          <span class="${getTagColor(tag)} drop-shadow-sm">
-                              ${tag}${i < char.tags.length - 1 ? ',' : ''}
-                          </span>
-                      `).join('') : ''}
-                  </div>
-  
-                </div>
-              `}).join('')}
-            </div>
-          `;
-          container.appendChild(row);
-        });
-  
-        if (!hasResults) {
-          container.innerHTML = `<div class="card-base p-8 text-center text-50 italic">No characters found matching criteria.</div>`;
-        }
-        searchInput.parentElement.classList.toggle('has-value', filters.search.length > 0);
-      }
-  
-      modeBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          modeBtns.forEach(b => b.classList.remove('active'));
-          e.currentTarget.classList.add('active');
-          currentMode = e.currentTarget.dataset.mode;
-          render();
-        });
-      });
-  
-      filterBtns.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-              const group = e.currentTarget.closest('.filter-group').dataset.group;
-              const value = e.currentTarget.dataset.value;
-              filters[group] = value;
-              setActiveFilterBtns();
-              render();
-          });
-      });
-  
-      searchInput.addEventListener('input', (e) => { filters.search = e.target.value; render(); });
-      clearSearchBtn.addEventListener('click', () => {
-          filters.search = '';
-          searchInput.value = '';
-          render();
-          searchInput.focus();
-      });
-      resetBtn.addEventListener('click', () => {
-          filters = { element: 'all', weapon: 'all', rarity: 'all', search: '' };
-          searchInput.value = '';
-          setActiveFilterBtns();
-          render();
-      });
-  
-      init();
-    </script>
+    });
+
+    init();
+  </script>
 
   <style>
-    /* When data-active is true, use the theme's primary color */
     .filter-btn[data-active="true"] {
         background-color: var(--primary);
         color: white;
     }
-    /* Ensure the SVG inherits the white color when active */
     .filter-btn[data-active="true"] svg path {
         fill: currentColor;
     }
-    /* Show the clear 'X' button when the parent has the 'has-value' class */
     .group.has-value #clearSearch {
         opacity: 1;
     }
