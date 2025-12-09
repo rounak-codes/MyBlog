@@ -363,6 +363,21 @@ export const characters: Character[] = [
         },
     },
     {
+        id: "durin",
+        name: "Durin",
+        element: "pyro",
+        weapon: "sword",
+        rarity: 5,
+        image: "/assets/images/characters/durin.png",
+        role: "Sub-DPS",
+        ranks: {
+            overworld: "T2",
+            abyss: "T0.5",
+            theatre: "T0.5",
+            stygian: "T0.5",
+        },
+    },
+    {
         id: "eula",
         name: "Eula",
         element: "cryo",
@@ -525,6 +540,21 @@ export const characters: Character[] = [
             abyss: "T1",
             theatre: "T2",
             stygian: "T2",
+        },
+    },
+    {
+        id: "jahoda",
+        name: "Jahoda",
+        element: "anemo",
+        weapon: "bow",
+        rarity: 5,
+        image: "/assets/images/characters/jahoda.png",
+        role: "Support",
+        ranks: {
+            overworld: "T2",
+            abyss: "T2",
+            theatre: "T2",
+            stygian: "T3",
         },
     },
     {
