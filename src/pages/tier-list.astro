@@ -50,12 +50,14 @@ const filterData = {
 };
 
 const tierColors = {
-	T0: "border-red-500/50 bg-red-500/10 text-red-500",
-	"T0.5": "border-orange-500/50 bg-orange-500/10 text-orange-500",
-	T1: "border-yellow-500/50 bg-yellow-500/10 text-yellow-500",
-	T2: "border-green-500/50 bg-green-500/10 text-green-500",
-	T3: "border-blue-500/50 bg-blue-500/10 text-blue-500",
-	T4: "border-gray-500/50 bg-gray-500/10 text-gray-500",
+    T0: "border-red-600/50 bg-red-600/10 text-red-600",          // Deep Red
+    "T0.5": "border-red-400/50 bg-red-400/10 text-red-400",       // Lighter Red
+    T1: "border-orange-500/50 bg-orange-500/10 text-orange-500",  // Orange
+    "T1.5": "border-amber-500/50 bg-amber-500/10 text-amber-500", // Lighter Orange (Amber)
+    T2: "border-yellow-400/50 bg-yellow-400/10 text-yellow-400",  // Paler Fade of Orange (Yellowish)
+    T3: "border-lime-500/50 bg-lime-500/10 text-lime-500",        // Pale Green
+    T4: "border-green-600/50 bg-green-600/10 text-green-600",     // Darker Green
+    T5: "border-cyan-500/50 bg-cyan-500/10 text-cyan-500",        // Cyan
 };
 ---
 
@@ -229,24 +231,25 @@ const tierColors = {
 
   function getTagColor(tag: string) {
       const t = tag.toUpperCase();
-      if (t.includes('DPS') || t.includes('PARTNER') || t.includes('CARRY')) return 'text-red-400';
-      if (t.includes('BUFF') || t.includes('ADVANCE') || t.includes('SP-FRIENDLY') || t.includes('HEALER')) return 'text-emerald-400';
-      if (t.includes('DEBUFF') || t.includes('DOT') || t.includes('BREAK')) return 'text-blue-300';
-      if (t.includes('SHIELD') || t.includes('SUSTAIN')) return 'text-yellow-400';
+      if (t.includes('ULT') || t.includes('PARTNER')) return 'text-red-400';
+      if (t.includes('BUFF') || t.includes('SHIELD') || t.includes('CC') || t.includes('DEBUFF') || t.includes('HEAL')) return 'text-green-400';
+      if (t.includes('AOE') || t.includes('CLEAVE') || t.includes('ST')) return 'text-white';
+      if (t.includes('C0')) return 'text-orange-400';
       return 'text-gray-300';
   }
 
   function getRankColorClass(rank: string) {
-      if (!rank) return 'bg-gray-700';
-      if (rank === 'T0') return 'bg-red-500 text-white';
-      if (rank === 'T0.5') return 'bg-orange-500 text-white';
-      if (rank === 'T1') return 'bg-yellow-500 text-black';
-      if (rank === 'T1.5') return 'bg-yellow-400/80 text-black';
-      if (rank === 'T2') return 'bg-green-500 text-white';
-      if (rank === 'T3') return 'bg-blue-500 text-white';
-      if (rank === 'T4') return 'bg-gray-500 text-white';
-      return 'bg-gray-700 text-gray-300';
-  }
+    if (!rank) return 'bg-gray-700';
+    if (rank === 'T0') return 'bg-red-600 text-white';
+    if (rank === 'T0.5') return 'bg-red-400 text-white';
+    if (rank === 'T1') return 'bg-orange-500 text-white';
+    if (rank === 'T1.5') return 'bg-amber-500 text-white'; // New Tier
+    if (rank === 'T2') return 'bg-yellow-400 text-black';
+    if (rank === 'T3') return 'bg-lime-500 text-black';
+    if (rank === 'T4') return 'bg-green-600 text-white';
+    if (rank === 'T5') return 'bg-cyan-500 text-white';
+    return 'bg-gray-700 text-gray-300';
+}   
 
   // --- CARD CREATION WITH PRYDWEN HOVER ---
   // Using char: any to bypass strict type checks on dynamic data object
@@ -334,7 +337,7 @@ const tierColors = {
                 <div class="p-2 bg-[var(--btn-regular-bg)] rounded-b-lg border-t border-[var(--line-divider)]">
                     <div class="flex flex-wrap justify-center gap-1">
                         <span class="text-[10px] font-bold text-gray-500 uppercase mr-1">TAGS:</span>
-                        ${char.tags ? char.tags.map((tag: string) => `<span class="text-[10px] font-bold ${getTagColor(tag)}">${tag}</span>`).join('<span class="text-gray-600 mx-1">•</span>') : '<span class="text-[10px] text-gray-600">None</span>'}
+                        ${char.tags ? char.tags.map((tag: string) => `<span class="text-[10px] font-bold ${getTagColor(tag)} uppercase">${tag}</span>`).join('<span class="text-gray-600 mx-1">•</span>') : '<span class="text-[10px] text-gray-600">None</span>'}
                     </div>
                 </div>
                 
@@ -359,9 +362,9 @@ const tierColors = {
     });
 
     // Type the tiers object safely
-    const tiers: Record<string, any[]> = { 'T0': [], 'T0.5': [], 'T1': [], 'T2': [], 'T3': [], 'T4': [] };
+    const tiers: Record<string, any[]> = { 'T0': [], 'T0.5': [], 'T1': [], 'T1.5': [], 'T2': [], 'T3': [], 'T4': [], 'T5': [] };
     filtered.forEach((char: any) => {
-      const rank = char.ranks[currentMode] || 'T4';
+      const rank = char.ranks[currentMode] || 'T5';
       if (tiers[rank]) tiers[rank].push(char);
     });
 
@@ -379,7 +382,7 @@ const tierColors = {
       const row = document.createElement('div');
       // CRITICAL FIX: Overflow MUST be visible for tooltip to show up
       row.className = 'card-base flex flex-col md:flex-row !overflow-visible mb-3'; 
-      const labelColorClass = tierColors[tier] || tierColors['T4'];
+      const labelColorClass = tierColors[tier] || tierColors['T5'];
       
       row.innerHTML = `
         <div class="w-full md:w-24 ${labelColorClass} font-bold text-2xl flex items-center justify-center p-4 border-b md:border-b-0 md:border-r border-[var(--line-divider)] border-dashed shrink-0">
