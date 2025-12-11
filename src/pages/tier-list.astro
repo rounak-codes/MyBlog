@@ -172,7 +172,9 @@ const tierColors = {
 
 <!-- TABLE HEADER -->
 <div class="max-w-7xl mx-auto hidden md:grid grid-cols-[6rem_1fr_1fr_1fr] gap-0 px-0 mb-2">
-  <div></div>
+  <div class="flex items-center justify-center font-black text-white/60 text-l tracking-widest select-none">
+    v6.3
+  </div>
   
   <!-- MAIN DPS (Sword Icon) -->
   <div class="bg-[var(--card-bg)]/50 py-2 text-center border-b-2 border-red-500/50 flex items-center justify-center gap-2">
@@ -367,10 +369,11 @@ const tierColors = {
       `;
   }
 
-  function render() {
+function render() {
     if (!container) return;
     container.innerHTML = '';
-    
+
+    // 1. Filter Logic
     const filtered = characters.filter((char: any) => {
       const matchesSearch = char.name.toLowerCase().includes(filters.search.toLowerCase());
       const matchesEl = filters.element === 'all' || char.element === filters.element;
@@ -379,17 +382,73 @@ const tierColors = {
       return matchesSearch && matchesEl && matchesWp && matchesRarity;
     });
 
-    // Type the tiers object safely
+    // 2. Sort into Tiers
+    // ensure T1.5 is included here as per previous steps
     const tiers: Record<string, any[]> = { 'T0': [], 'T0.5': [], 'T1': [], 'T1.5': [], 'T2': [], 'T3': [], 'T4': [], 'T5': [] };
+    
     filtered.forEach((char: any) => {
       const rank = char.ranks[currentMode] || 'T5';
       if (tiers[rank]) tiers[rank].push(char);
     });
 
     let hasResults = false;
+
+    // --- NEW: HEADER CONFIGURATION ---
+    // Maps specific tiers to a Group Title and Color style
+    const groupHeaders: Record<string, { title: string, color: string, border: string }> = {
+        'T0':   { title: "THE BEST OF THE BEST", color: "text-red-500", border: "bg-red-500/50" },
+        'T0.5': { title: "THE BEST OF THE BEST", color: "text-red-500", border: "bg-red-500/50" },
+        
+        'T1':   { title: "THE GOOD META OPTIONS", color: "text-orange-500", border: "bg-orange-500/50" },
+        'T1.5': { title: "THE GOOD META OPTIONS", color: "text-orange-500", border: "bg-orange-500/50" },
+        'T2':   { title: "THE GOOD META OPTIONS", color: "text-orange-500", border: "bg-orange-500/50" },
+        
+        'T3':   { title: "SITUATIONAL CHARACTERS", color: "text-lime-500", border: "bg-lime-500/50" },
+        'T4':   { title: "SITUATIONAL CHARACTERS", color: "text-lime-500", border: "bg-lime-500/50" },
+        
+        'T5':   { title: "CURRENTLY WEAK CHARACTERS", color: "text-cyan-500", border: "bg-cyan-500/50" }
+    };
+    
+    const renderedGroups = new Set<string>();
+    // ----------------------------------
+
     Object.keys(tiers).forEach(tier => {
       if (tiers[tier].length === 0) return;
       hasResults = true;
+
+      // --- NEW: INJECT HEADER IF NEEDED ---
+      const group = groupHeaders[tier];
+      if (group && !renderedGroups.has(group.title)) {
+          // 1. CHECK: Is this the very first group?
+          const isFirstGroup = renderedGroups.size === 0;
+
+          const header = document.createElement('div');
+          const marginClass = isFirstGroup ? 'mt-4' : 'mt-0';
+          header.className = `flex w-full max-w-7xl mx-auto ${marginClass} mb-2 opacity-90`;
+          
+          // 2. LOGIC: Only add the Spacer Div if it's the first group
+          // If NOT first group, spacerHtml is empty string -> line goes fully left
+          const spacerHtml = isFirstGroup 
+            ? `<div class="hidden md:flex w-24 shrink-0 items-center justify-center font-black text-white/60 text-xl tracking-widest uppercase select-none">TIER</div>`
+            : ``;
+
+          header.innerHTML = `
+              ${spacerHtml}
+              <div class="flex-grow flex items-center gap-4">
+                  <div class="h-[2px] flex-grow ${group.border}"></div>
+                  <div class="${group.color} font-black uppercase tracking-widest text-base md:text-lg flex items-center gap-2 whitespace-nowrap">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z"/></svg>
+                      ${group.title}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6l-6-6z"/></svg>
+                  </div>
+                  <div class="h-[2px] flex-grow ${group.border}"></div>
+              </div>
+          `;
+          
+          container.appendChild(header);
+          renderedGroups.add(group.title);
+      }
+      // -------------------------------------
       
       const cols = {
           main: tiers[tier].filter((c: any) => c.role.toLowerCase().includes('main') || c.role === 'DPS'),
@@ -398,10 +457,11 @@ const tierColors = {
       };
 
       const row = document.createElement('div');
-      // CRITICAL FIX: Overflow MUST be visible for tooltip to show up
-      row.className = 'card-base flex flex-col md:flex-row !overflow-visible mb-3'; 
+      // Added !overflow-visible to ensure tooltips don't get clipped
+      row.className = 'card-base flex flex-col md:flex-row !overflow-visible mb-3 shadow-md'; 
       const labelColorClass = tierColors[tier] || tierColors['T5'];
       
+      // ... (Rest of your row.innerHTML logic stays exactly the same) ...
       row.innerHTML = `
         <div class="w-full md:w-24 ${labelColorClass} font-bold text-2xl flex items-center justify-center p-4 border-b md:border-b-0 md:border-r border-[var(--line-divider)] border-dashed shrink-0">
           ${tier}
@@ -417,7 +477,7 @@ const tierColors = {
           </div>
           <div class="p-3 flex flex-wrap gap-x-3 gap-y-6 content-start relative min-h-[100px]">
                <div class="md:hidden text-xs font-bold text-emerald-400 w-full mb-2 opacity-75">SUPPORT</div>
-              ${cols.support.map((c: any) => createCharCard(c)).join('')}
+               ${cols.support.map((c: any) => createCharCard(c)).join('')}
           </div>
         </div>
       `;
