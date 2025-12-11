@@ -1,29 +1,66 @@
-# Hello there!
+---
+title: Welcome to My Blog
+published: 2025-12-01
+description: "An introduction to who I am, what I play, and what you can expect from this corner of the internet."
+image: ""
+tags: [Introduction, Gaming, Personal]
+category: General
+draft: false
+---
 
-I go by Xiffy and welcome to my personal blog. This is a space where I write about the things I love, the games I play, and whatever else is on my mind.
+# Hello There!
 
-## The Gamer Life
-I spend a significant amount of my time in digital worlds. I love writing about my experiences, lore theories, and builds. Currently, I am heavily invested in the Gacha rabbit hole:
+I go by **Xiffy**, and welcome to my personal take of the internet and the stuff I consume.
 
-* **Genshin Impact** (My main game!)
-* **Wuthering Waves**
-* **Honkai: Star Rail**
-* **Zenless Zone Zero**
+For a long time, I've wanted a space that is entirely my own ,somewhere to catalog the things I love, the games that consume my free time, and whatever random thoughts are living rent-free in my head. Social media is great for quick updates but sometimes you just need more room to breathe, write and explain exactly why that one lore theory that you saw on r/GenshinLore makes total sense.
 
-I also casually play **Punishing Gray Raven**. When I'm not grinding dailies or pulling for new characters, I play a lot of other indie games. I'm a huge fan of **Horror games**—the scarier, the better.
+So, here we are. This blog is going to be my digital journal for gaming, hobbies, and everything in between.
+
+## The Digital Rabbit Hole
+
+If you know me through discord, you know that I spend a significant amount of time on my hobbies. I love games that scratch that itch of making you feel empty when you hit the game credits. I love digging into the mechanics, maximizing builds, and getting lost in the lore.
+
+Currently, I am residing deep inside the Gacha rabbit hole. It’s a love-hate relationship with RNG, but the worlds these developers create keep me coming back.
+
+:::note[MY ROTATION]
+Here is what I am currently playing , some of them are casually:
+* **Genshin Impact:** This is my main game. If I'm not online, I'm probably thinking about artifact stats or lore.
+* **Wuthering Waves:** Loved the combat mechanics here but a love-hate relationship with the lore but now I am moving towards playing the game on and off.
+* **Honkai: Star Rail:** Playing casually and it is usually for when I want turn-based strategy (and pain) and lay back on my couch.
+* **Zenless Zone Zero:** Same as above. Underrated in terms of game quality , both in combat and out of combat (iykyk).
+:::
+
+I also play **Punishing Gray Raven** for its combat and lovely community.
+
+### It's Not Just Gacha
+While I spend a lot of time grinding dailies and saving pulls for new characters (well its only about an hour at max when you hit the endgame), I need a break from the anime aesthetic sometimes. I am a massive fan of **Indie games** and, specifically, **Horror games**.
+
+There is something about the adrenaline of a good horror game—the scarier, the better. Expect to see some posts here about my experiences (and probably some regrets) playing through the scariest titles I can find.
 
 ## Off The Screen
 
-Outside of gaming, I am a massive football fan (**Visca el Barça!**) and I watch a lot of sports. I love watching spy thrillers, sci-fi shows and crime dramas. I also read a little.
+When I finally put the controller down or tab out of the game, I'm usually shouting at a TV screen. I am a massive football fan—**Visca el Barça!**
 
-## Connect
+I also consume a healthy amount of media. I love myself a good **spy thriller**, the imagination of **sci-fi**, and the grit of a solid **crime drama**. I try to read a little when I can, though my backlog of books is starting to rival my backlog of games.
 
- I am active on Discord and Twitter. Feel free to reach out if you want to co-op or talk about games.
+## What to Expect Here
 
-> - **Discord :** `.xiffysz` <a href="https://discord.com/users/432807169901985802" target="_blank" class="inline-flex items-center justify-center ml-1 text-blue-500 hover:text-blue-700 transition-colors" title="Open Discord Profile"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83l1.41 1.41L19 6.41V10h2V3z"/></svg></a>
-> - **Twitter :** `xiffy_twt` <a href="https://x.com/xiffy_twt" target="_blank" class="inline-flex items-center justify-center ml-1 text-blue-500 hover:text-blue-700 transition-colors" title="Open Twitter Profile"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path fill="currentColor" d="M19 19H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2v-7h-2zM14 3v2h3.59l-9.83 9.83l1.41 1.41L19 6.41V10h2V3z"/></svg></a>
+I want this blog to be a mix of helpful content and personal rambling. In the future, you can expect:
+1.  **Game Reviews & Impressions:** My honest thoughts on the latest updates or new indie finds.
+2.  **Lore Theories:** Deep dives into the stories of the games I play.
+3.  **Wacky Stuff I find interesting:** Sharing some unique stuff I find online and my takes and impressions on them mostly based on the games or tech I consume.
+4.  **Personal Updates:** Life outside the screen.
 
----
+## Let's Connect
+
+I am always down to co-op, discuss the latest banners, or just talk about games. I am active on both Discord and Twitter, so feel free to say hi.
+
+:::tip[CONTACT ME]
+* **Discord:** [`.xiffysz`](https://discord.com/users/432807169901985802)
+* **Twitter:** [`xiffy_twt`](https://x.com/xiffy_twt)
+:::
+
+Thanks for stopping by. I'll see you in the next post!
 
 > ### Credits for images used in this site
 > - **Tier List Portraits:** [KQM Library - Keqing Mains Portraits](https://library.keqingmains.com/resources/tools/portraits)
