@@ -2,6 +2,24 @@
 import { tierListInfo } from "../data/tierListInfo";
 import { characters } from "../data/tierlist";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
+import fs from 'node:fs';
+import path from 'node:path';
+
+const dataFilePath = path.join(process.cwd(), 'src/data/tierlist.ts');
+let lastUpdated = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+try {
+  if (fs.existsSync(dataFilePath)) {
+    const stats = fs.statSync(dataFilePath);
+    // Format the date (e.g., "October 5, 2025")
+    lastUpdated = stats.mtime.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  }
+} catch (e) {
+  console.warn('Could not fetch tier list update time:', e);
+}
 
 // --- DATA & ICONS ---
 const icons = {
@@ -68,7 +86,7 @@ const tierColors = {
   <div class="card-base p-6 mb-4 flex flex-col items-center text-center">
       <h1 class="text-3xl md:text-4xl font-bold text-90 mb-2">Xiffy's Tier List</h1>
       <div class="flex items-center gap-2 text-50 text-sm">
-          <span>Patch: 5.2</span><span class="w-1 h-1 bg-current rounded-full"></span><span>Updated: Today</span>
+          <span>Patch: 6.3</span><span class="w-1 h-1 bg-current rounded-full"></span><span>Updated: {lastUpdated}</span>
       </div>
   </div>
   <div class="card-base flex flex-col">
@@ -234,7 +252,7 @@ const tierColors = {
       if (t.includes('ULT') || t.includes('PARTNER')) return 'text-red-400';
       if (t.includes('BUFF') || t.includes('SHIELD') || t.includes('CC') || t.includes('DEBUFF') || t.includes('HEAL')) return 'text-green-400';
       if (t.includes('AOE') || t.includes('CLEAVE') || t.includes('ST')) return 'text-white';
-      if (t.includes('C0')) return 'text-orange-400';
+      if (t.includes('C0') || t.includes('INVEST')) return 'text-orange-400';
       return 'text-gray-300';
   }
 
