@@ -34,7 +34,8 @@ let links: NavBarLink[] = navBarConfig.links.map(
         <div class="hidden md:flex">
             {links.map((l) => {
                 return <a aria-label={l.name} href={l.external ? l.url : url(l.url)} target={l.external ? "_blank" : null}
-                          class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
+                        data-no-swup={(l.url.includes('tier-list') || Astro.url.pathname.includes('tier-list')) ? 'true' : undefined}
+                        class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"          
                 >
                     <div class="flex items-center">
                         {l.name}
