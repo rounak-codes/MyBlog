@@ -1,0 +1,309 @@
+---
+import MainGridLayout from "../../layouts/WideLayout.astro"; 
+import { characters, type Character } from "../../data/tierlist";
+import { characterThoughts } from "../../data/characterThoughts";
+import { Icon } from "astro-icon/components";
+
+export async function getStaticPaths() {
+  return characters.map((char) => ({
+    params: { id: char.id },
+    props: { char },
+  }));
+}
+
+interface Props {
+  char: Character;
+}
+
+const { char } = Astro.props;
+const thoughts = characterThoughts[char.id];
+
+// --- Rarity Background Logic ---
+let bgImage = '/assets/backgrounds/4star-bg.png';
+if (char.id === 'aloy') bgImage = '/assets/backgrounds/aloy-bg.png';
+else if (char.rarity === 5) bgImage = '/assets/backgrounds/5star-bg.png';
+
+// --- Rarity Text Color Logic ---
+const rarityColor = char.rarity === 5 
+    ? 'text-yellow-600 dark:text-yellow-400' 
+    : 'text-purple-600 dark:text-purple-400';
+
+// Helper for Ranking Colors
+function getRankColor(rank: string) {
+    if (!rank) return "bg-gray-200 dark:bg-gray-700 text-50";
+    if (rank.startsWith("T0")) return "bg-red-500 text-white shadow-red-500/20";
+    if (rank.startsWith("T1")) return "bg-orange-500 text-white shadow-orange-500/20";
+    if (rank.startsWith("T2")) return "bg-yellow-500 text-white shadow-yellow-500/20";
+    if (rank.startsWith("T3")) return "bg-lime-600 text-white shadow-lime-600/20";
+    if (rank.startsWith("T4")) return "bg-green-600 text-white shadow-green-600/20";
+    return "bg-cyan-500 text-white";
+}
+
+// Helper for Social Card Styling
+function getSocialStyle(url: string) {
+    if (url.includes('reddit')) {
+        return {
+            icon: "fa6-brands:reddit-alien",
+            title: "Subreddit",
+            subtitle: "Join the Discussion",
+            bgClass: "bg-[#FF4500]",
+        };
+    }
+    if (url.includes('discord')) {
+        return {
+            icon: "fa6-brands:discord",
+            title: "Discord Server",
+            subtitle: "Community & Co-op",
+            bgClass: "bg-[#5865F2]",
+        };
+    }
+    return {
+        icon: "fa6-solid:users",
+        title: "Community",
+        subtitle: "Social Link",
+        bgClass: "bg-gray-600",
+    };
+}
+
+const getVideoUrl = (id: string) => `https://www.youtube.com/embed/${id}`;
+
+const gameModes = ['overworld', 'abyss', 'theatre', 'stygian'] as const;
+
+const elementIcons = {
+    pyro: "/assets/icons/pyro.png",
+    hydro: "/assets/icons/hydro.png",
+    anemo: "/assets/icons/anemo.png",
+    electro: "/assets/icons/electro.png",
+    dendro: "/assets/icons/dendro.png",
+    cryo: "/assets/icons/cryo.png",
+    geo: "/assets/icons/geo.png",
+};
+const weaponIcons = {
+    sword: "/assets/icons/sword.png",
+    claymore: "/assets/icons/claymore.png",
+    polearm: "/assets/icons/polearm.png",
+    catalyst: "/assets/icons/catalyst.png",
+    bow: "/assets/icons/bow.png",
+};
+---
+
+<MainGridLayout title={`${char.name} Analysis`} description={`My thoughts and guides for ${char.name}`}>
+  
+  <div class="max-w-6xl mx-auto mt-4 px-2 mb-12">
+    
+    <div class="card-base p-6 md:p-8 mb-6 relative overflow-hidden flex flex-col md:flex-row gap-8 items-center md:items-start">
+        
+        <div class="absolute inset-0 bg-cover bg-center opacity-15 blur-l pointer-events-none scale-110" 
+             style={`background-image: url('${char.namecard || char.image}');`}>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[var(--card-bg)]/90 to-[var(--card-bg)]/40 pointer-events-none"></div>
+
+        {char.lastUpdated && (
+            <div class="absolute top-3 right-3 z-20 flex items-center gap-1.5 bg-black/40 backdrop-blur-md border border-white/10 rounded-full pl-2 pr-3 py-1 shadow-sm">
+                <Icon name="material-symbols:history" class="text-white/80 text-sm" />
+                <span class="text-white/90 text-xs font-bold tracking-wide uppercase">
+                    {char.lastUpdated}
+                </span>
+            </div>
+        )}
+
+        <div class="relative z-10 shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-xl overflow-hidden shadow-2xl border-4 border-[var(--card-bg)] bg-cover bg-center"
+             style={`background-image: url('${bgImage}');`}>
+            <img src={char.image} class="w-full h-full object-cover" />
+        </div>
+
+        <div class="relative z-10 flex-grow text-center md:text-left flex flex-col items-center md:items-start">
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-wider mb-2 text-[var(--primary)] drop-shadow-sm">{char.name}</h1>
+            
+            {char.title && (
+                <div class={`text-base font-bold mb-3 tracking-wide ${rarityColor}`}>
+                   {char.title}
+                </div>
+            )}
+            
+            {char.affiliation && (
+                <div class={`text-sm font-bold mb-3 tracking-wide uppercase opacity-90 ${rarityColor}`}>
+                    Affiliation: {char.affiliation}
+                </div>
+            )}
+
+            <div class="flex items-center gap-3 mb-2 bg-[var(--card-bg)]/80 backdrop-blur-md py-1.5 px-3 rounded-lg shadow-sm border border-[var(--line-divider)]">
+                <div class="flex items-center gap-1">
+                    <span class="text-yellow-500 dark:text-yellow-400 font-bold text-base">{char.rarity}</span>
+                    <Icon name="material-symbols:star" class="text-yellow-500 dark:text-yellow-400 text-sm" />
+                </div>
+                <div class="w-px h-4 bg-[var(--line-divider)]"></div>
+                <div class="w-6 h-6 rounded-full flex items-center justify-center bg-black/5 dark:bg-black/20 p-1" title={char.element}>
+                    <img src={elementIcons[char.element]} class="w-full h-full object-contain" />
+                </div>
+                 <div class="w-px h-4 bg-[var(--line-divider)]"></div>
+                <div class="w-6 h-6 flex items-center justify-center" title={char.weapon}>
+                    <img src={weaponIcons[char.weapon]} class="w-4 h-4 brightness-0 dark:invert opacity-90" />
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                {char.tags && char.tags.map(tag => (
+                    <span class="px-2 py-1 bg-[var(--btn-regular-bg)] text-75 rounded text-xs font-bold uppercase opacity-80 shadow-sm">{tag}</span>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    {thoughts && (
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+                <Icon name="material-symbols:psychology-alt-outline" />
+                My Thoughts
+            </h2>
+            <div class="card-base p-6 md:p-8 text-lg leading-relaxed text-90 space-y-4" set:html={thoughts} />
+        </div>
+    )}
+
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+            <Icon name="material-symbols:leaderboard-outline" />
+            Performance Rating
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {gameModes.map(mode => (
+                <div class="card-base p-4 flex flex-col items-center justify-center gap-2 border border-[var(--line-divider)]">
+                    <span class="text-xs font-bold uppercase tracking-widest text-50">{mode}</span>
+                    <div class={`text-2xl font-black px-4 py-1 rounded shadow-lg ${getRankColor(char.ranks[mode])}`}>
+                        {char.ranks[mode] || '-'}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+            <Icon name="material-symbols:menu-book-rounded" />
+            Guides & Resources
+        </h2>
+        
+        {char.infographic && (
+            <a href={char.infographic} target="_blank" class="block mb-6 group relative rounded-xl overflow-hidden shadow-lg border border-[var(--line-divider)]">
+                 <img 
+                    src={char.infographic} 
+                    alt="Character Guide Infographic" 
+                    class="w-full h-auto object-cover group-hover:scale-[1.01] transition duration-500"
+                    loading="lazy"
+                 />
+                 <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition">
+                    Click to Expand
+                 </div>
+            </a>
+        )}
+
+        <div class="flex flex-col gap-6">
+            
+            {(char.kqmUrl || char.mainsUrl) && (
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    {/* KQM CARD */}
+                    {char.kqmUrl && (
+                        <a href={char.kqmUrl} target="_blank" class="card-base p-4 group bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-card-bg-hover)] transition flex items-center justify-between border border-[var(--line-divider)] shadow-md">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-[#5e3a8c] rounded-lg flex items-center justify-center text-white shadow-sm shrink-0">
+                                    <Icon name="material-symbols:auto-stories-outline" class="text-2xl" />
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-lg text-90 transition truncate">KeqingMains Guide</div>
+                                    <div class="text-xs text-50 line-clamp-1">Mechanics & Builds</div>
+                                </div>
+                            </div>
+                            <Icon name="fa6-solid:arrow-up-right-from-square" class="text-50 group-hover:text-75 transition shrink-0" />
+                        </a>
+                    )}
+
+                    {/* MAINS COMMUNITY CARD */}
+                    {char.mainsUrl && (
+                        <a href={char.mainsUrl} target="_blank" class="card-base p-4 group bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-card-bg-hover)] transition flex items-center justify-between border border-[var(--line-divider)] shadow-md">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-600/10 dark:bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 shadow-sm shrink-0">
+                                    <Icon name="material-symbols:description-outline-rounded" class="text-2xl" />
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-lg text-90 transition truncate">Mains Community Guide</div>
+                                    <div class="text-xs text-50 line-clamp-1">In-depth Analysis</div>
+                                </div>
+                            </div>
+                            <Icon name="fa6-solid:arrow-up-right-from-square" class="text-50 group-hover:text-75 transition shrink-0" />
+                        </a>
+                    )}
+                </div>
+            )}
+
+            {char.youtube && char.youtube.length > 0 && (
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {char.youtube.map(videoId => (
+                        <div class="card-base overflow-hidden aspect-video relative group shadow-lg rounded-lg border border-[var(--line-divider)]">
+                            <iframe 
+                                src={getVideoUrl(videoId)} 
+                                title="YouTube video" 
+                                class="w-full h-full"
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    </div>
+
+    {char.mainsSocials && char.mainsSocials.length > 0 && (
+        <div class="mb-8">
+             <h2 class="text-2xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+                <Icon name="fa6-solid:users" />
+                {char.name} Mains Socials
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {char.mainsSocials.map(url => {
+                    const style = getSocialStyle(url);
+                    return (
+                        <a href={url} target="_blank" class="card-base p-4 group bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-card-bg-hover)] transition flex items-center justify-between border border-[var(--line-divider)] shadow-md">
+                            <div class="flex items-center gap-4">
+                                <div class={`w-12 h-12 rounded-lg flex items-center justify-center text-white shadow-sm shrink-0 ${style.bgClass}`}>
+                                    <Icon name={style.icon} class="text-2xl" />
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-bold text-lg text-90 transition truncate">{style.title}</div>
+                                    <div class="text-xs text-50 line-clamp-1">{style.subtitle}</div>
+                                </div>
+                            </div>
+                            <Icon name="fa6-solid:arrow-up-right-from-square" class="text-50 group-hover:text-75 transition shrink-0" />
+                        </a>
+                    )
+                })}
+            </div>
+        </div>
+    )}
+
+    <div class="mb-8">
+        <h2 class="text-2xl font-bold text-[var(--primary)] mb-4 flex items-center gap-2">
+            <Icon name="material-symbols:copyright-outline-rounded" />
+            Credits
+        </h2>
+        
+        <div class="card-base p-6 md:p-8 border border-[var(--line-divider)]">
+             <ul class="list-disc pl-5 space-y-2 text-75">
+                <li>
+                    {char.credits || "Rankings and analysis by Xiffy."}
+                </li>
+                <li>
+                    External guides and resources belong to their respective creators (KeqingMains, Content Creators, etc.).
+                </li>
+                 <li>
+                    Game assets and images are property of Hoyoverse.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+  </div>
+</MainGridLayout>

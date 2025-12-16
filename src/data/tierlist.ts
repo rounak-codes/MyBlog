@@ -12,7 +12,17 @@ export interface Character {
         stygian: string;
     };
     role: "DPS" | "Sub-DPS" | "Support";
-	tags?: string[];
+    tags?: string[];
+    kqmUrl?: string;
+    mainsUrl?: string;
+    mainsSocials?: string[];
+    youtube?: string[];
+    credits?: string;
+    affiliation?: string;
+    title?: string;
+    infographic?: string;
+    namecard?: string;
+    lastUpdated?: string;
 }
 
 export const characters: Character[] = [
@@ -30,6 +40,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/aino.png",
     },
     {
         id: "albedo",
@@ -45,6 +56,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/albedo.png",
     },
     {
         id: "alhaitham",
@@ -60,6 +72,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/alhaitham.png",
     },
     {
         id: "aloy",
@@ -75,6 +88,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/aloy.png",
     },
     {
         id: "amber",
@@ -90,6 +104,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/amber.png",
     },
     {
         id: "itto",
@@ -105,6 +120,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/itto.png",
     },
     {
         id: "arlecchino",
@@ -120,6 +136,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/arlecchino.png",
     },
     {
         id: "baizhu",
@@ -136,6 +153,7 @@ export const characters: Character[] = [
             stygian: "T2",
         },
 		tags: ["heal"],
+        namecard: "/assets/namecards/baizhu.png",
     },
     {
         id: "barbara",
@@ -151,6 +169,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/barbara.png",
     },
     {
         id: "beidou",
@@ -166,6 +185,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/beidou.png",
     },
     {
         id: "bennett",
@@ -181,6 +201,7 @@ export const characters: Character[] = [
             theatre: "T0",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/bennett.png",
     },
     {
         id: "candace",
@@ -196,6 +217,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/candace.png",
     },
     {
         id: "charlotte",
@@ -211,6 +233,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/charlotte.png",
     },
     {
         id: "chasca",
@@ -226,6 +249,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/chasca.png",
     },
     {
         id: "chevreuse",
@@ -241,6 +265,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/chevreuse.png",
     },
     {
         id: "chiori",
@@ -256,6 +281,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/chiori.png",
     },
     {
         id: "chongyun",
@@ -271,6 +297,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/chongyun.png",
     },
     {
         id: "citlali",
@@ -286,6 +313,7 @@ export const characters: Character[] = [
             theatre: "T0",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/citlali.png",
     },
     {
         id: "clorinde",
@@ -301,6 +329,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/clorinde.png",
     },
     {
         id: "collei",
@@ -316,6 +345,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/collei.png",
     },
     {
         id: "cyno",
@@ -331,6 +361,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/cyno.png",
     },
     {
         id: "dahlia",
@@ -346,6 +377,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/dahlia.png",
     },
     {
         id: "dehya",
@@ -361,6 +393,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/dehya.png",
     },
     {
         id: "diluc",
@@ -376,6 +409,16 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T3",
         },
+        kqmUrl: "https://keqingmains.com/q/diluc-quickguide/",
+        mainsUrl:"https://docs.google.com/document/u/0/d/1C1bDQ4Y9xfzAllOqi6kg4rJzh2my9yyT9djAplBpFo0/mobilebasic#heading=h.ytx3e05p5dyl",
+        mainsSocials: ["https://www.reddit.com/r/DilucMains/","https://discord.gg/VEkz4n9rBh"],
+        youtube: ["9Jg5EAyVdMc", "ynwWHZtQqSs"],
+        credits: "KQM.gg , Diluc Mains , Zy0x , JJJackal",
+        affiliation: "Dawn Winery",
+        title: "The Dark Side of Dawn",
+        infographic: "/assets/infographics/diluc.png",
+        namecard: "/assets/namecards/diluc.png",
+        lastUpdated: "6.2",
     },
     {
         id: "diona",
@@ -391,6 +434,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/diona.png",
     },
     {
         id: "dori",
@@ -406,6 +450,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/dori.png",
     },
     {
         id: "durin",
@@ -421,6 +466,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/durin.png",
     },
     {
         id: "emilie",
@@ -436,6 +482,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/emilie.png",
     },
     {
         id: "escoffier",
@@ -451,6 +498,7 @@ export const characters: Character[] = [
             theatre: "T0",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/escoffier.png",
     },
     {
         id: "eula",
@@ -466,6 +514,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/eula.png",
     },
     {
         id: "faruzan",
@@ -481,6 +530,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/faruzan.png",
     },
     {
         id: "fischl",
@@ -496,6 +546,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/fischl.png",
     },
     {
         id: "flins",
@@ -511,6 +562,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/flins.png",
     },
     {
         id: "freminet",
@@ -526,6 +578,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/freminet.png",
     },
     {
         id: "furina",
@@ -541,6 +594,7 @@ export const characters: Character[] = [
             theatre: "T0",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/furina.png",
     },
     {
         id: "gaming",
@@ -556,6 +610,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/gaming.png",
     },
     {
         id: "ganyu",
@@ -571,6 +626,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/ganyu.png",
     },
     {
         id: "gorou",
@@ -586,6 +642,7 @@ export const characters: Character[] = [
             theatre: "T5",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/gorou.png",
     },
     {
         id: "heizou",
@@ -601,6 +658,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/heizou.png",
     },
     {
         id: "hutao",
@@ -616,6 +674,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/hutao.png",
     },
     {
         id: "iansan",
@@ -631,6 +690,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/iansan.png",
     },
     {
         id: "ifa",
@@ -646,6 +706,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/ifa.png",
     },
     {
         id: "ineffa",
@@ -661,6 +722,7 @@ export const characters: Character[] = [
             theatre: "T0",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/ineffa.png",
     },
     {
         id: "jahoda",
@@ -676,6 +738,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/jahoda.png",
     },
     {
         id: "jean",
@@ -691,6 +754,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/jean.png",
     },
     {
         id: "kachina",
@@ -706,6 +770,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/kachina.png",
     },
     {
         id: "kazuha",
@@ -721,6 +786,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/kazuha.png",
     },
     {
         id: "kaeya",
@@ -736,6 +802,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/kaeya.png",
     },
     {
         id: "ayaka",
@@ -751,6 +818,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/ayaka.png",
     },
     {
         id: "ayato",
@@ -766,6 +834,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/ayato.png",
     },
     {
         id: "kaveh",
@@ -781,6 +850,7 @@ export const characters: Character[] = [
             theatre: "T5",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/kaveh.png",
     },
     {
         id: "keqing",
@@ -796,6 +866,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/keqing.png",
     },
     {
         id: "kinich",
@@ -811,6 +882,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/kinich.png",
     },
     {
         id: "kirara",
@@ -826,6 +898,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/kirara.png",
     },
     {
         id: "klee",
@@ -841,6 +914,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/klee.png",
     },
     {
         id: "sara",
@@ -856,6 +930,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/sara.png",
     },
     {
         id: "kuki",
@@ -871,6 +946,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/kuki.png",
     },
     {
         id: "lanyan",
@@ -886,6 +962,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/lanyan.png",
     },
     {
         id: "lauma",
@@ -901,6 +978,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/lauma.png",
     },
     {
         id: "layla",
@@ -916,6 +994,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/layla.png",
     },
     {
         id: "lisa",
@@ -931,6 +1010,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/lisa.png",
     },
     {
         id: "lynette",
@@ -946,6 +1026,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/lynette.png",
     },
     {
         id: "lyney",
@@ -961,6 +1042,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/lyney.png",
     },
     {
         id: "mavuika",
@@ -976,6 +1058,7 @@ export const characters: Character[] = [
             theatre: "T0",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/mavuika.png",
     },
     {
         id: "mika",
@@ -991,6 +1074,7 @@ export const characters: Character[] = [
             theatre: "T5",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/mika.png",
     },
     {
         id: "mona",
@@ -1006,6 +1090,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/mona.png",
     },
     {
         id: "mualani",
@@ -1021,6 +1106,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/mualani.png",
     },
     {
         id: "nahida",
@@ -1036,6 +1122,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/nahida.png",
     },
     {
         id: "navia",
@@ -1051,6 +1138,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/navia.png",
     },
     {
         id: "nefer",
@@ -1066,6 +1154,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/nefer.png",
     },
     {
         id: "neuvillette",
@@ -1081,6 +1170,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/neuvillette.png",
     },
     {
         id: "nilou",
@@ -1096,6 +1186,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/nilou.png",
     },
     {
         id: "ningguang",
@@ -1111,6 +1202,7 @@ export const characters: Character[] = [
             theatre: "T5",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/ningguang.png",
     },
     {
         id: "noelle",
@@ -1126,6 +1218,7 @@ export const characters: Character[] = [
             theatre: "T5",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/noelle.png",
     },
     {
         id: "ororon",
@@ -1141,6 +1234,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/ororon.png",
     },
     {
         id: "qiqi",
@@ -1156,6 +1250,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/qiqi.png",
     },
     {
         id: "raiden",
@@ -1171,6 +1266,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/raiden.png",
     },
     {
         id: "razor",
@@ -1186,6 +1282,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/razor.png",
     },
     {
         id: "rosaria",
@@ -1201,6 +1298,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/rosaria.png",
     },
     {
         id: "kokomi",
@@ -1216,6 +1314,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/kokomi.png",
     },
     {
         id: "sayu",
@@ -1231,6 +1330,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/sayu.png",
     },
     {
         id: "sethos",
@@ -1246,6 +1346,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/sethos.png",
     },
     {
         id: "shenhe",
@@ -1261,6 +1362,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/shenhe.png",
     },
     {
         id: "sigewinne",
@@ -1276,6 +1378,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/sigewinne.png",
     },
     {
         id: "skirk",
@@ -1291,6 +1394,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/skirk.png",
     },
     {
         id: "sucrose",
@@ -1306,14 +1410,15 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T1",
         },
+        namecard: "/assets/namecards/sucrose.png",
     },
     {
-        id: "childe",
+        id: "tartaglia",
         name: "Tartaglia",
         element: "hydro",
         weapon: "bow",
         rarity: 5,
-        image: "/assets/images/characters/childe.png",
+        image: "/assets/images/characters/tartaglia.png",
         role: "DPS",
         ranks: {
             overworld: "T4",
@@ -1321,6 +1426,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/tartaglia.png",
     },
     {
         id: "thoma",
@@ -1336,6 +1442,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/thoma.png",
     },
     {
         id: "tighnari",
@@ -1351,6 +1458,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/tighnari.png",
     },
     {
         id: "traveler_anemo",
@@ -1366,6 +1474,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/traveler.png",
     },
     {
         id: "traveler_dendro",
@@ -1381,6 +1490,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T3",
         },
+        namecard: "/assets/namecards/traveler.png",
     },
     {
         id: "traveler_electro",
@@ -1396,6 +1506,7 @@ export const characters: Character[] = [
             theatre: "T5",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/traveler.png",
     },
     {
         id: "traveler_geo",
@@ -1411,6 +1522,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/traveler.png",
     },
     {
         id: "traveler_hydro",
@@ -1426,141 +1538,7 @@ export const characters: Character[] = [
             theatre: "T5",
             stygian: "T5",
         },
-    },
-    {
-        id: "venti",
-        name: "Venti",
-        element: "anemo",
-        weapon: "bow",
-        rarity: 5,
-        image: "/assets/images/characters/venti.png",
-        role: "Support",
-        ranks: {
-            overworld: "T0.5",
-            abyss: "T0.5",
-            theatre: "T0.5",
-            stygian: "T1",
-        },
-    },
-    {
-        id: "wanderer",
-        name: "Wanderer",
-        element: "anemo",
-        weapon: "catalyst",
-        rarity: 5,
-        image: "/assets/images/characters/wanderer.png",
-        role: "DPS",
-        ranks: {
-            overworld: "T0",
-            abyss: "T2",
-            theatre: "T2",
-            stygian: "T2",
-        },
-    },
-    {
-        id: "wriothesley",
-        name: "Wriothesley",
-        element: "cryo",
-        weapon: "catalyst",
-        rarity: 5,
-        image: "/assets/images/characters/wriothesley.png",
-        role: "DPS",
-        ranks: {
-            overworld: "T1",
-            abyss: "T2",
-            theatre: "T2",
-            stygian: "T2",
-        },
-    },
-    {
-        id: "xiangling",
-        name: "Xiangling",
-        element: "pyro",
-        weapon: "polearm",
-        rarity: 4,
-        image: "/assets/images/characters/xiangling.png",
-        role: "Sub-DPS",
-        ranks: {
-            overworld: "T2",
-            abyss: "T1",
-            theatre: "T1",
-            stygian: "T1",
-        },
-    },
-    {
-        id: "xianyun",
-        name: "Xianyun",
-        element: "anemo",
-        weapon: "catalyst",
-        rarity: 5,
-        image: "/assets/images/characters/xianyun.png",
-        role: "Support",
-        ranks: {
-            overworld: "T0",
-            abyss: "T2",
-            theatre: "T1",
-            stygian: "T1",
-        },
-    },
-    {
-        id: "xiao",
-        name: "Xiao",
-        element: "anemo",
-        weapon: "polearm",
-        rarity: 5,
-        image: "/assets/images/characters/xiao.png",
-        role: "DPS",
-        ranks: {
-            overworld: "T1",
-            abyss: "T3",
-            theatre: "T1",
-            stygian: "T3",
-        },
-    },
-    {
-        id: "xilonen",
-        name: "Xilonen",
-        element: "geo",
-        weapon: "sword",
-        rarity: 5,
-        image: "/assets/images/characters/xilonen.png",
-        role: "Support",
-        ranks: {
-            overworld: "T0",
-            abyss: "T0",
-            theatre: "T0",
-            stygian: "T0",
-        },
-    },
-    {
-        id: "xingqiu",
-        name: "Xingqiu",
-        element: "hydro",
-        weapon: "sword",
-        rarity: 4,
-        image: "/assets/images/characters/xingqiu.png",
-        role: "Sub-DPS",
-        ranks: {
-            overworld: "T1",
-            abyss: "T0",
-            theatre: "T0",
-            stygian: "T0",
-        },
-    },
-    {
-        id: "xinyan",
-        name: "Xinyan",
-        element: "pyro",
-        weapon: "claymore",
-        rarity: 4,
-        image: "/assets/images/characters/xinyan.png",
-        role: "Support",
-        ranks: {
-            overworld: "T5",
-            abyss: "T5",
-            theatre: "T5",
-            stygian: "T5",
-        },
+        namecard: "/assets/namecards/traveler.png",
     },
     {
         id: "varesa",
@@ -1576,6 +1554,151 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0.5",
         },
+        namecard: "/assets/namecards/varesa.png",
+    },
+    {
+        id: "venti",
+        name: "Venti",
+        element: "anemo",
+        weapon: "bow",
+        rarity: 5,
+        image: "/assets/images/characters/venti.png",
+        role: "Support",
+        ranks: {
+            overworld: "T0.5",
+            abyss: "T0.5",
+            theatre: "T0.5",
+            stygian: "T1",
+        },
+        namecard: "/assets/namecards/venti.png",
+    },
+    {
+        id: "wanderer",
+        name: "Wanderer",
+        element: "anemo",
+        weapon: "catalyst",
+        rarity: 5,
+        image: "/assets/images/characters/wanderer.png",
+        role: "DPS",
+        ranks: {
+            overworld: "T0",
+            abyss: "T2",
+            theatre: "T2",
+            stygian: "T2",
+        },
+        namecard: "/assets/namecards/wanderer.png",
+    },
+    {
+        id: "wriothesley",
+        name: "Wriothesley",
+        element: "cryo",
+        weapon: "catalyst",
+        rarity: 5,
+        image: "/assets/images/characters/wriothesley.png",
+        role: "DPS",
+        ranks: {
+            overworld: "T1",
+            abyss: "T2",
+            theatre: "T2",
+            stygian: "T2",
+        },
+        namecard: "/assets/namecards/wriothesley.png",
+    },
+    {
+        id: "xiangling",
+        name: "Xiangling",
+        element: "pyro",
+        weapon: "polearm",
+        rarity: 4,
+        image: "/assets/images/characters/xiangling.png",
+        role: "Sub-DPS",
+        ranks: {
+            overworld: "T2",
+            abyss: "T1",
+            theatre: "T1",
+            stygian: "T1",
+        },
+        namecard: "/assets/namecards/xiangling.png",
+    },
+    {
+        id: "xianyun",
+        name: "Xianyun",
+        element: "anemo",
+        weapon: "catalyst",
+        rarity: 5,
+        image: "/assets/images/characters/xianyun.png",
+        role: "Support",
+        ranks: {
+            overworld: "T0",
+            abyss: "T2",
+            theatre: "T1",
+            stygian: "T1",
+        },
+        namecard: "/assets/namecards/xianyun.png",
+    },
+    {
+        id: "xiao",
+        name: "Xiao",
+        element: "anemo",
+        weapon: "polearm",
+        rarity: 5,
+        image: "/assets/images/characters/xiao.png",
+        role: "DPS",
+        ranks: {
+            overworld: "T1",
+            abyss: "T3",
+            theatre: "T1",
+            stygian: "T3",
+        },
+        namecard: "/assets/namecards/xiao.png",
+    },
+    {
+        id: "xilonen",
+        name: "Xilonen",
+        element: "geo",
+        weapon: "sword",
+        rarity: 5,
+        image: "/assets/images/characters/xilonen.png",
+        role: "Support",
+        ranks: {
+            overworld: "T0",
+            abyss: "T0",
+            theatre: "T0",
+            stygian: "T0",
+        },
+        namecard: "/assets/namecards/xilonen.png",
+    },
+    {
+        id: "xingqiu",
+        name: "Xingqiu",
+        element: "hydro",
+        weapon: "sword",
+        rarity: 4,
+        image: "/assets/images/characters/xingqiu.png",
+        role: "Sub-DPS",
+        ranks: {
+            overworld: "T1",
+            abyss: "T0",
+            theatre: "T0",
+            stygian: "T0",
+        },
+        namecard: "/assets/namecards/xingqiu.png",
+    },
+    {
+        id: "xinyan",
+        name: "Xinyan",
+        element: "pyro",
+        weapon: "claymore",
+        rarity: 4,
+        image: "/assets/images/characters/xinyan.png",
+        role: "Support",
+        ranks: {
+            overworld: "T5",
+            abyss: "T5",
+            theatre: "T5",
+            stygian: "T5",
+        },
+        namecard: "/assets/namecards/xinyan.png",
     },
     {
         id: "yae",
@@ -1591,6 +1714,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/yae.png",
     },
     {
         id: "yanfei",
@@ -1606,6 +1730,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T5",
         },
+        namecard: "/assets/namecards/yanfei.png",
     },
     {
         id: "yaoyao",
@@ -1621,6 +1746,7 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/yaoyao.png",
     },
     {
         id: "yelan",
@@ -1636,6 +1762,7 @@ export const characters: Character[] = [
             theatre: "T0.5",
             stygian: "T0",
         },
+        namecard: "/assets/namecards/yelan.png",
     },
     {
         id: "yoimiya",
@@ -1651,6 +1778,7 @@ export const characters: Character[] = [
             theatre: "T4",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/yoimiya.png",
     },
     {
         id: "mizuki",
@@ -1666,6 +1794,7 @@ export const characters: Character[] = [
             theatre: "T2",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/mizuki.png",
     },
     {
         id: "yunjin",
@@ -1681,6 +1810,7 @@ export const characters: Character[] = [
             theatre: "T3",
             stygian: "T4",
         },
+        namecard: "/assets/namecards/yunjin.png",
     },
     {
         id: "zhongli",
@@ -1696,5 +1826,6 @@ export const characters: Character[] = [
             theatre: "T1",
             stygian: "T2",
         },
+        namecard: "/assets/namecards/zhongli.png",
     },
 ];
